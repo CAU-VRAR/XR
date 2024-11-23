@@ -7,11 +7,14 @@ public class ProjectileControl : MonoBehaviour
     public ProjectilePoolControl pool;
     public Transform targetPos;
     public float projectileSpeed = 10.0f;
+
+    private Rigidbody _rb;
     
     // Start is called before the first frame update
     void Start()
     {
         pool = GetComponentInParent<ProjectilePoolControl>();
+        _rb = GetComponent<Rigidbody>();
         targetPos = GameManager.instance.player.transform;
     }
 
@@ -32,7 +35,7 @@ public class ProjectileControl : MonoBehaviour
 
     public void Launch()
     {
-        GetComponent<Rigidbody>().velocity = transform.forward * projectileSpeed;
+        _rb.velocity = transform.forward * projectileSpeed;
     }
 
     public void DisableThis()
