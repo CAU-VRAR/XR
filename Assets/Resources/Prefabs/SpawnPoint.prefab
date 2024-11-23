@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2705689840348166743}
-  - component: {fileID: 6283262057544775136}
   m_Layer: 0
   m_Name: SpawnPoint
   m_TagString: Untagged
@@ -32,16 +31,3 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: -159.552, z: 0}
---- !u!114 &6283262057544775136
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1412235773427215391}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 33e44c7dc8ec9964496ef7ac3b30e479, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _icePrefab: {fileID: 733504226454128430, guid: 73e2c1245774850499ef8824f8927d91, type: 3}
