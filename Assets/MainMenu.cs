@@ -11,6 +11,7 @@ public class MainMenu : MonoBehaviour, ISubmitHandler
 
     public void OnSubmit(BaseEventData eventData)
     {
+        Debug.Log("Submit");
         if (_isShowingTitle)
         {
             transform.GetChild(0).gameObject.SetActive(false);

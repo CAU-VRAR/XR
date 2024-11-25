@@ -12,6 +12,7 @@ public enum GamaType
 
 public class GameManager : MonoBehaviour
 {
+    const int STAGE_COUNT = 5;
     public static GameManager instance { get; private set; }
 
     public GameObject player;
@@ -24,6 +25,16 @@ public class GameManager : MonoBehaviour
     public UnityEvent onEndQuiz;
     
     public int nowStage = 1;
+    [SerializeField] private MeshRenderer ground;
+    [SerializeField] List<Material> groundMaterials;
+    private List<Color> _groundColors = new List<Color>
+    {
+        new Color(145,150,156),
+        new Color(112,126,142),
+        new Color(55,78,104),
+        new Color(29,55,85),
+        new Color(7,28,51)
+    };
     
     private void Awake()
     {
@@ -43,6 +54,7 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
+        ChangeStage(0);
         StartCoroutine(StartGame());
     }
     
@@ -59,8 +71,23 @@ public class GameManager : MonoBehaviour
     IEnumerator StartGame()
     {
         yield return new WaitForSeconds(1.5f);
+
         Invoke(nameof(EndGame), 10.0f);
         StartProjectile();
+        
+        //스테이지 변경 테스트
+        yield return new WaitForSeconds(1.5f);
+        Debug.Log("Stage 2");
+        ChangeStage(1);
+        yield return new WaitForSeconds(1.5f);
+        Debug.Log("Stage 3");
+        ChangeStage(2);
+        yield return new WaitForSeconds(1.5f);
+        Debug.Log("Stage 4");
+        ChangeStage(3);
+        yield return new WaitForSeconds(1.5f);
+        Debug.Log("Stage 5");
+        ChangeStage(4);
     }
 
     void EndGame()
@@ -75,16 +102,16 @@ public class GameManager : MonoBehaviour
         onStartQuiz.Invoke();
     }
 
-    private List<Color> _colors = new List<Color>
-    {
-        new Color(145,150,156),
-        new Color(112,126,142),
-        new Color(55,78,104),
-        new Color(29,55,85),
-        new Color(7,28,51)
-    };
+    
     void ChangeStage(int stage)
     {
+        //혹시 몰라서 범위 체크
+        if (stage < 0 || stage >= STAGE_COUNT)
+        {
+            Debug.LogError("Invalid stage");
+            return;
+        }
         nowStage = stage;
+        ground.material = groundMaterials[stage];
     }
 }
