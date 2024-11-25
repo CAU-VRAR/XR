@@ -11,7 +11,7 @@ public class ProjectileControl : MonoBehaviour
     private Rigidbody _rb;
     
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         pool = GetComponentInParent<ProjectilePoolControl>();
         _rb = GetComponent<Rigidbody>();

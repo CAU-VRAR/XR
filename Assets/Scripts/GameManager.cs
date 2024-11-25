@@ -74,4 +74,17 @@ public class GameManager : MonoBehaviour
         Debug.Log("STARTQUIZ");
         onStartQuiz.Invoke();
     }
+
+    private List<Color> _colors = new List<Color>
+    {
+        new Color(145,150,156),
+        new Color(112,126,142),
+        new Color(55,78,104),
+        new Color(29,55,85),
+        new Color(7,28,51)
+    };
+    void ChangeStage(int stage)
+    {
+        nowStage = stage;
+    }
 }
