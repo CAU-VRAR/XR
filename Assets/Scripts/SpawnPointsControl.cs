@@ -9,7 +9,7 @@ public class SpawnPointsControl : MonoBehaviour
     public ProjectilePoolControl snowProjectilePool = new();
     public ProjectilePoolControl iceProjectilePool = new();
 
-    public float iceProbability = 0.3f;
+    public float iceProbability = 0.0f;
     public float shootCoolTime = 1.5f;
     
     // Start is called before the first frame update
@@ -19,16 +19,8 @@ public class SpawnPointsControl : MonoBehaviour
             .Where(t => t != transform)
             .ToList();
         
-        GameManager.instance.onStartProjectile.AddListener(() =>
-        {
-            Debug.Log("Starting cori");
-            StartCoroutine(ShootProjectile());
-        });
-        GameManager.instance.onEndProjectile.AddListener(() =>
-        {
-            Debug.Log("Ending cori");
-            StopAllCoroutines();
-        });
+        GameManager.instance.onStartProjectile.AddListener(() => { StartCoroutine(ShootProjectile()); });
+        GameManager.instance.onEndProjectile.AddListener(StopAllCoroutines);
     }
 
     private IEnumerator ShootProjectile()
@@ -39,7 +31,7 @@ public class SpawnPointsControl : MonoBehaviour
             
             int spawnPointIndex = Random.Range(0, spawnPoints.Count);
 
-            var projectile = iceProbability <= Random.value ? iceProjectilePool.GetOneProjectile() : snowProjectilePool.GetOneProjectile();
+            var projectile = Random.value < iceProbability ? iceProjectilePool.GetOneProjectile() : snowProjectilePool.GetOneProjectile();
             projectile.transform.position = spawnPoints[spawnPointIndex].position;
             projectile.transform.LookAt(GameManager.instance.transform);
             projectile.Launch();

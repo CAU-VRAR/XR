@@ -16,15 +16,18 @@ public class GameManager : MonoBehaviour
     public static GameManager instance { get; private set; }
 
     public GameObject player;
+    public QuizControl quizControl;
     
-    public GamaType gameType;
+    public GamaType gameType = GamaType.Waiting;
 
     public UnityEvent onStartProjectile;
     public UnityEvent onEndProjectile;
     public UnityEvent onStartQuiz;
     public UnityEvent onEndQuiz;
+
+    public float projectileTime = 20.0f;
     
-    public int nowStage = 1;
+    public int nowStage = 0;
     [SerializeField] private MeshRenderer ground;
     [SerializeField] List<Material> groundMaterials;
     private List<Color> _groundColors = new List<Color>
@@ -54,57 +57,71 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        ChangeStage(0);
+        quizControl.onCorrect.AddListener(OnClearQuiz);
+        quizControl.onWrong.AddListener(OnFailQuiz);
+        
         StartCoroutine(StartGame());
-    }
-    
-    public void StartProjectile()
-    {
-        onStartProjectile.Invoke();
-    }
-
-    public void EndProjectile()
-    {
-        onEndProjectile.Invoke();
     }
 
     IEnumerator StartGame()
     {
         yield return new WaitForSeconds(1.5f);
 
-        Invoke(nameof(EndGame), 10.0f);
+        ChangeStage(++nowStage);
         StartProjectile();
-        
-        //스테이지 변경 테스트
-        yield return new WaitForSeconds(1.5f);
-        Debug.Log("Stage 2");
-        ChangeStage(1);
-        yield return new WaitForSeconds(1.5f);
-        Debug.Log("Stage 3");
-        ChangeStage(2);
-        yield return new WaitForSeconds(1.5f);
-        Debug.Log("Stage 4");
-        ChangeStage(3);
-        yield return new WaitForSeconds(1.5f);
-        Debug.Log("Stage 5");
-        ChangeStage(4);
-    }
-
-    void EndGame()
-    {
+        yield return new WaitForSeconds(projectileTime);
         EndProjectile();
+        yield return new WaitForSeconds(3.0f);
         StartQuiz();
     }
 
+    void StartProjectile()
+    {
+        gameType = GamaType.Projectile;
+        onStartProjectile.Invoke();
+    }
+
+    void EndProjectile()
+    {
+        gameType = GamaType.Waiting;
+        onEndProjectile.Invoke();
+    }
+    
     void StartQuiz()
     {
+        gameType = GamaType.Quiz;
         Debug.Log("STARTQUIZ");
         onStartQuiz.Invoke();
     }
 
+    void OnClearQuiz()
+    {
+        gameType = GamaType.Waiting;
+        Debug.Log("CLEARQUIZ");
+        onEndQuiz.Invoke();
+        StartCoroutine(StartGame());
+    }
+
+    void OnFailQuiz()
+    {
+        gameType = GamaType.Waiting;
+        Debug.Log("FAILQUIZ");
+        onEndQuiz.Invoke();
+        GameOver();
+    }
+
+    void GameOver()
+    {
+    }
+
+    void Retry()
+    {
+        nowStage = 0;
+    }
     
     void ChangeStage(int stage)
     {
+        Debug.Log($"Stage {stage}");
         //혹시 몰라서 범위 체크
         if (stage < 0 || stage >= STAGE_COUNT)
         {

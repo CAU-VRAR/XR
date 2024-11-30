@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class QuizControl : MonoBehaviour
@@ -33,6 +34,9 @@ public class QuizControl : MonoBehaviour
     public TextMeshPro answerText2;
     public TextMeshPro answerText3;
     
+    public UnityEvent onCorrect;
+    public UnityEvent onWrong;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -60,5 +64,17 @@ public class QuizControl : MonoBehaviour
     {
         gameObject.SetActive(false);
         nowQuizIndex++;
+    }
+
+    public void CheckAnswer(int answer)
+    {
+        if (_answerNumberList[nowQuizIndex] == answer)
+        {
+            onCorrect.Invoke();
+        }
+        else
+        {
+            onWrong.Invoke();
+        }
     }
 }
