@@ -146,7 +146,8 @@ public class GameManager : MonoBehaviour
             Debug.LogError("Invalid stage");
             return;
         }
-        
+
+        SoundManager.Instance.ChangeStageBGM();
         SoundManager.Instance.PlaySoundOneShot("NextStage",0.7f);
         projectileDamage = 10 + 5 * stage;
         ProjectileControl.projectileSpeed = 10 + 2 * stage;
