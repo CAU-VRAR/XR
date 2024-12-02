@@ -24,9 +24,9 @@ public class ProjectileControl : MonoBehaviour
         
     }
 
-    void OnTriggerEnter(Collider other)
+    void OnCollisionEnter(Collision other)
     {
-        if (other.CompareTag("Player"))
+        if (other.gameObject.CompareTag("Player"))
         {
             DisableThis();
             GameManager.instance.PlayerProjectileHit();
