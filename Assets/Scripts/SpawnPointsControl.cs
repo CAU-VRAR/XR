@@ -11,7 +11,7 @@ public class SpawnPointsControl : MonoBehaviour
 
     public float iceProbability = 0.0f;
     public float shootCoolTime = 1.5f;
-    
+
     // Start is called before the first frame update
     void Start()
     {

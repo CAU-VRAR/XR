@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UI;
 
 public enum GamaType
 {
@@ -13,7 +14,7 @@ public enum GamaType
 public class GameManager : MonoBehaviour
 {
     const int STAGE_COUNT = 5;
-    
+    private const int START_HEALTH = 100;
     
     public static GameManager instance { get; private set; }
 
@@ -31,10 +32,11 @@ public class GameManager : MonoBehaviour
     
     public int nowStage = 1;
 
-    public int playerHealth = 100;
+    public int playerHealth = START_HEALTH;
     public int projectileDamage = 20;
-    
-    
+    [SerializeField] private Slider playerHealthSlider;
+
+    public MainMenu mainMenu;
     [SerializeField] private MeshRenderer ground;
     [SerializeField] List<Material> groundMaterials;
     private List<Color> _groundColors = new List<Color>
@@ -62,7 +64,7 @@ public class GameManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
-    void Start()
+    public void Game()
     {
     	ChangeStage(0);
         quizControl.onCorrect.AddListener(OnClearQuiz);
@@ -71,8 +73,11 @@ public class GameManager : MonoBehaviour
         StartCoroutine(StartGame());
     }
 
-    IEnumerator StartGame()
+    public IEnumerator StartGame()
     {
+        ChangeStage(0);
+        quizControl.onCorrect.AddListener(OnClearQuiz);
+        quizControl.onWrong.AddListener(OnFailQuiz);
         yield return new WaitForSeconds(1.5f);
 
         ChangeStage(++nowStage);
@@ -120,11 +125,16 @@ public class GameManager : MonoBehaviour
 
     void GameOver()
     {
+        //TODO: 게임오버 처리 (눈덩이 날아오는거 멈추기)
+        SoundManager.Instance.PlaySoundOneShot("GameOver",0.7f);
+        mainMenu.gameObject.SetActive(true);
+        mainMenu.isGameOver();
     }
 
-    void Retry()
+    public void Retry()
     {
         nowStage = 0;
+        playerHealth = START_HEALTH;
     }
     
     void ChangeStage(int stage)
@@ -136,8 +146,10 @@ public class GameManager : MonoBehaviour
             Debug.LogError("Invalid stage");
             return;
         }
-        //TODO: 스테이지 변경에 따른 projectile 속도, 데미지 수치 변경
         
+        SoundManager.Instance.PlaySoundOneShot("NextStage",0.7f);
+        projectileDamage = 10 + 5 * stage;
+        ProjectileControl.projectileSpeed = 10 + 2 * stage;
         
         nowStage = stage;
         ground.material = groundMaterials[stage];
@@ -145,16 +157,35 @@ public class GameManager : MonoBehaviour
     
     public void PlayerProjectileHit()
     {
-        playerHealth -= projectileDamage;
-        //TODO: UI 업데이트
+        playerHealth = Mathf.Max(playerHealth-projectileDamage,0);
+        
+        //바로 감소시키면 너무 빨라서 서서히 감소
+        //playerHealthSlider.value = playerHealth;
+        StartCoroutine(DecreaseHealthSlider());
+        
         if (playerHealth <= 0)
         {
-            //TODO: 게임오버
+            GameOver();
+        }
+        else
+        {
+            SoundManager.Instance.PlaySoundOneShot("Hit",0.5f);
         }
     }
-
-    public void Retry()
+    
+    private float  healthDecreaseDuration = 0.5f;
+    IEnumerator DecreaseHealthSlider()
     {
-        
+        float currentTime = 0;
+        float startValue = playerHealthSlider.value;
+        float targetValue = playerHealth;
+
+        while (currentTime < healthDecreaseDuration)
+        {
+            playerHealthSlider.value = Mathf.Lerp(startValue, targetValue, currentTime / healthDecreaseDuration);
+            currentTime += Time.deltaTime;
+            yield return null;
+        }
+        playerHealthSlider.value = targetValue;
     }
 }
