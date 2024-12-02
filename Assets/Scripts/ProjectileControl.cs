@@ -29,6 +29,7 @@ public class ProjectileControl : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             DisableThis();
+            GameManager.instance.PlayerProjectileHit();
         }
     }
 

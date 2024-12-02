@@ -13,6 +13,8 @@ public enum GamaType
 public class GameManager : MonoBehaviour
 {
     const int STAGE_COUNT = 5;
+    
+    
     public static GameManager instance { get; private set; }
 
     public GameObject player;
@@ -25,6 +27,11 @@ public class GameManager : MonoBehaviour
     public UnityEvent onEndQuiz;
     
     public int nowStage = 1;
+
+    public int playerHealth = 100;
+    public int projectileDamage = 20;
+    
+    
     [SerializeField] private MeshRenderer ground;
     [SerializeField] List<Material> groundMaterials;
     private List<Color> _groundColors = new List<Color>
@@ -111,7 +118,25 @@ public class GameManager : MonoBehaviour
             Debug.LogError("Invalid stage");
             return;
         }
+        //TODO: 스테이지 변경에 따른 projectile 속도, 데미지 수치 변경
+        
+        
         nowStage = stage;
         ground.material = groundMaterials[stage];
+    }
+    
+    public void PlayerProjectileHit()
+    {
+        playerHealth -= projectileDamage;
+        //TODO: UI 업데이트
+        if (playerHealth <= 0)
+        {
+            //TODO: 게임오버
+        }
+    }
+
+    public void Retry()
+    {
+        
     }
 }
