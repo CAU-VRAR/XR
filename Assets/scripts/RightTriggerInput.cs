@@ -4,7 +4,8 @@ using Valve.VR; // SteamVR 네임스페이스
 public class RightTriggerInput : MonoBehaviour
 {
     // SteamVR Input 액션
-    public SteamVR_Action_Boolean triggerAction; // 트리거 액션
+    public SteamVR_Action_Boolean triggerAction = SteamVR_Input.GetAction<SteamVR_Action_Boolean>("grabpinch");
+     // 트리거 액션
     public SteamVR_Input_Sources handType = SteamVR_Input_Sources.RightHand; // 오른손 컨트롤러
 
     void Update()
