@@ -415,6 +415,7 @@
 -analyzer:"C:/Program Files/Unity/Hub/Editor/6000.0.29f1/Editor/Data/Tools/Unity.SourceGenerators/Unity.UIToolkit.SourceGenerator.dll"
 "Assets/Realistic Hail Set/Demo Scene/Scripts/DemoSceneController.cs"
 "Assets/scripts/CloseCanvas.cs"
+"Assets/scripts/Gaze.cs"
 "Assets/scripts/LaserPointerHandler.cs"
 "Assets/scripts/MessagePanel.cs"
 "Assets/scripts/PlayerHealth.cs"

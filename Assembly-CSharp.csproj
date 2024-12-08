@@ -73,6 +73,7 @@
     <Compile Include="Assets\scripts\MessagePanel.cs" />
     <Compile Include="Assets\scripts\SphereCollision.cs" />
     <Compile Include="Assets\scripts\snowSpawn.cs" />
+    <Compile Include="Assets\scripts\Gaze.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
