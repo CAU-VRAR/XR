@@ -413,7 +413,12 @@
 -analyzer:"C:/Program Files/Unity/Hub/Editor/6000.0.29f1/Editor/Data/Tools/Unity.SourceGenerators/Unity.Properties.SourceGenerator.dll"
 -analyzer:"C:/Program Files/Unity/Hub/Editor/6000.0.29f1/Editor/Data/Tools/Unity.SourceGenerators/Unity.SourceGenerators.dll"
 -analyzer:"C:/Program Files/Unity/Hub/Editor/6000.0.29f1/Editor/Data/Tools/Unity.SourceGenerators/Unity.UIToolkit.SourceGenerator.dll"
+"Assets/MessagePanel.cs"
+"Assets/PlayerHealth.cs"
 "Assets/Realistic Hail Set/Demo Scene/Scripts/DemoSceneController.cs"
+"Assets/RightTriggerInput.cs"
+"Assets/snowSpawn.cs"
+"Assets/SphereCollision.cs"
 -langversion:9.0
 /deterministic
 /optimize+
