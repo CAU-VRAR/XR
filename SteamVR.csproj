@@ -60,17 +60,13 @@
   </PropertyGroup>
   <ItemGroup>
     <Analyzer Include="C:\Users\tojin\.vscode\extensions\visualstudiotoolsforunity.vstuc-1.0.5\Analyzers\Microsoft.Unity.Analyzers.dll" />
-    <Analyzer Include="C:\Users\tojin\My project (1)\Library\PackageCache\com.unity.collab-proxy\Lib\Editor\unityplastic.dll" />
-    <Analyzer Include="C:\Users\tojin\My project (1)\Library\PackageCache\com.unity.collab-proxy\Lib\Editor\log4netPlastic.dll" />
-    <Analyzer Include="C:\Users\tojin\My project (1)\Library\PackageCache\com.unity.collab-proxy\Lib\Editor\Unity.Plastic.Antlr3.Runtime.dll" />
-    <Analyzer Include="C:\Users\tojin\My project (1)\Library\PackageCache\com.unity.collab-proxy\Lib\Editor\Unity.Plastic.Newtonsoft.Json.dll" />
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\6000.0.29f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.SourceGenerators.dll" />
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\6000.0.29f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.Properties.SourceGenerator.dll" />
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\6000.0.29f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.UIToolkit.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\SteamVR\InteractionSystem\Core\Scripts\PlaySound.cs" />
     <Compile Include="Assets\SteamVR\Scripts\SteamVR_Render.cs" />
+    <Compile Include="Assets\SteamVR\InteractionSystem\Core\Scripts\PlaySound.cs" />
     <Compile Include="Assets\SteamVR\InteractionSystem\Core\Scripts\DebugUI.cs" />
     <Compile Include="Assets\SteamVR\Input\SteamVR_Action_Single.cs" />
     <Compile Include="Assets\SteamVR\InteractionSystem\Core\Scripts\ItemPackage.cs" />
@@ -130,8 +126,8 @@
     <Compile Include="Assets\SteamVR\Input\BehaviourUnityEvents\SteamVR_Behaviour_Pose_TrackingChangedEvent.cs" />
     <Compile Include="Assets\SteamVR\Extras\SteamVR_TestThrow.cs" />
     <Compile Include="Assets\SteamVR\InteractionSystem\Teleport\Scripts\ChaperoneInfo.cs" />
-    <Compile Include="Assets\SteamVR\InteractionSystem\Longbow\Scripts\SoundBowClick.cs" />
     <Compile Include="Assets\SteamVR\Scripts\SteamVR.cs" />
+    <Compile Include="Assets\SteamVR\InteractionSystem\Longbow\Scripts\SoundBowClick.cs" />
     <Compile Include="Assets\SteamVR\Input\BehaviourUnityEvents\SteamVR_Behaviour_PoseEvent.cs" />
     <Compile Include="Assets\SteamVR\Input\SteamVR_Behaviour_Vector2.cs" />
     <Compile Include="Assets\SteamVR\InteractionSystem\Core\Scripts\SoundDeparent.cs" />
@@ -144,9 +140,9 @@
     <Compile Include="Assets\SteamVR\InteractionSystem\Core\Scripts\LinearDrive.cs" />
     <Compile Include="Assets\SteamVR\Input\SteamVR_Action_Vector2.cs" />
     <Compile Include="Assets\SteamVR\Input\SteamVR_ActionSet.cs" />
-    <Compile Include="Assets\SteamVR\InteractionSystem\Teleport\Scripts\TeleportMarkerBase.cs" />
-    <Compile Include="Assets\SteamVR\InteractionSystem\Samples\BuggyBuddy\trackObj.cs" />
     <Compile Include="Assets\SteamVR\InteractionSystem\Core\Scripts\UIElement.cs" />
+    <Compile Include="Assets\SteamVR\InteractionSystem\Samples\BuggyBuddy\trackObj.cs" />
+    <Compile Include="Assets\SteamVR\InteractionSystem\Teleport\Scripts\TeleportMarkerBase.cs" />
     <Compile Include="Assets\SteamVR\Input\SteamVR_Input_References.cs" />
     <Compile Include="Assets\SteamVR\InteractionSystem\Core\Scripts\HideOnHandFocusLost.cs" />
     <Compile Include="Assets\SteamVR\Input\SteamVR_Action_Out.cs" />
@@ -183,12 +179,12 @@
     <Compile Include="Assets\SteamVR\InteractionSystem\Core\Scripts\Hand.cs" />
     <Compile Include="Assets\SteamVR\Scripts\SteamVR_CameraFlip.cs" />
     <Compile Include="Assets\SteamVR\Scripts\SteamVR_Settings.cs" />
-    <Compile Include="Assets\SteamVR\InteractionSystem\Core\Scripts\CustomEvents.cs" />
     <Compile Include="Assets\SteamVR\InteractionSystem\Teleport\Scripts\AllowTeleportWhileAttachedToHand.cs" />
+    <Compile Include="Assets\SteamVR\InteractionSystem\Core\Scripts\CustomEvents.cs" />
     <Compile Include="Assets\SteamVR\InteractionSystem\Samples\Scripts\CustomSkeletonHelper.cs" />
     <Compile Include="Assets\SteamVR\Scripts\SteamVR_Camera.cs" />
-    <Compile Include="Assets\SteamVR\Input\SteamVR_Input_ActionScopes.cs" />
     <Compile Include="Assets\SteamVR\Extras\SteamVR_LaserPointer.cs" />
+    <Compile Include="Assets\SteamVR\Input\SteamVR_Input_ActionScopes.cs" />
     <Compile Include="Assets\SteamVR\InteractionSystem\Core\Scripts\HandPhysics.cs" />
     <Compile Include="Assets\SteamVR\InteractionSystem\Samples\BuggyBuddy\trackCam.cs" />
     <Compile Include="Assets\SteamVR\Input\BehaviourUnityEvents\SteamVR_Behaviour_SingleEvent.cs" />
@@ -202,9 +198,9 @@
     <Compile Include="Assets\SteamVR\InteractionSystem\Samples\Squishy\SquishyToy.cs" />
     <Compile Include="Assets\SteamVR\InteractionSystem\Core\Scripts\LinearMapping.cs" />
     <Compile Include="Assets\SteamVR\Input\SteamVR_Behaviour_SkeletonCustom.cs" />
+    <Compile Include="Assets\SteamVR\Input\SteamVR_ActionSet_Manager.cs" />
     <Compile Include="Assets\SteamVR\Input\SteamVR_Action.cs" />
     <Compile Include="Assets\SteamVR\InteractionSystem\Core\Scripts\HoverButton.cs" />
-    <Compile Include="Assets\SteamVR\Input\SteamVR_ActionSet_Manager.cs" />
     <Compile Include="Assets\SteamVR\InteractionSystem\Teleport\Scripts\IgnoreTeleportTrace.cs" />
     <Compile Include="Assets\SteamVR\InteractionSystem\Samples\BuggyBuddy\BuggyController.cs" />
     <Compile Include="Assets\SteamVR\Extras\SteamVR_ForceSteamVRMode.cs" />
