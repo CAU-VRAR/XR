@@ -13,16 +13,8 @@ public class LaserPointerHandler : MonoBehaviour
     {
         // LaserPointer의 이벤트에 함수 등록
         laserPointer.PointerClick += OnPointerClick;
-        if (instance != null && instance != this)
-    {
-        Debug.LogError("Another GameManager instance exists! Destroying this one.");
-        Destroy(gameObject);
-        return;
-    }
-
-    instance = this;
-    DontDestroyOnLoad(gameObject);
-    Debug.Log("GameManager instance initialized.");
+    
+    
     }
 
     void OnDestroy()
@@ -33,25 +25,35 @@ public class LaserPointerHandler : MonoBehaviour
 
     private void OnPointerClick(object sender, PointerEventArgs e)
     {
-        // 선택된 오브젝트가 캡슐인지 확인
-         if (e.target.CompareTag("Capsule"))
-         {
-            // 캡슐의 색상 변경
-             Renderer renderer = e.target.GetComponent<Renderer>();
-             if (renderer != null)
-             {
-                 renderer.material.color = Color.red; // 색상을 빨간색으로 변경
-                 
-             }
-           
-            //gameManager.StartPanelInput();
-            // GameManager의 StartPanelInput 호출
-            
+        // 클릭된 오브젝트가 눈사람인지 확인
+        if (e.target.CompareTag("Snowman"))
+        {
+            Debug.Log("Snowman clicked! Destroying object...");
+            Destroy(e.target.gameObject); // 오브젝트 제거\
             GameManager.instance.StartPanelInput();
              // 캔버스 비활성화
-            startMainCanvas.SetActive(false);     
+            startMainCanvas.SetActive(false); 
+        }
+
+        // // 선택된 오브젝트가 캡슐인지 확인
+        //  if (e.target.CompareTag("Capsule"))
+        //  {
+        //     // 캡슐의 색상 변경
+        //      Renderer renderer = e.target.GetComponent<Renderer>();
+        //      if (renderer != null)
+        //      {
+        //          renderer.material.color = Color.red; // 색상을 빨간색으로 변경
+                 
+        //      }
+           
+        //     //gameManager.StartPanelInput();
+        //     // GameManager의 StartPanelInput 호출
             
-        };
+        //     GameManager.instance.StartPanelInput();
+        //      // 캔버스 비활성화
+        //     startMainCanvas.SetActive(false);     
+            
+        // };
          
         // 선택된 오브젝트가 StartMainCanvas인지 확인
         if (e.target.CompareTag("Canvas"))
@@ -62,7 +64,10 @@ public class LaserPointerHandler : MonoBehaviour
             // GameManager의 StartPanelInput 호출
             if (gameManager != null)
             {
-                gameManager.StartPanelInput();
+                //gameManager.StartPanelInput();
+                GameManager.instance.StartPanelInput();
+                // 캔버스 비활성화
+                startMainCanvas.SetActive(false); 
             }
         }
     }

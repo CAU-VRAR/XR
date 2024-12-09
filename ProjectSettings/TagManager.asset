@@ -11,6 +11,7 @@ TagManager:
   - Ice
   - Snow
   - Canvas
+  - Snowman
   layers:
   - Default
   - TransparentFX

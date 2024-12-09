@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.TextCore;
 using UnityEngine.UI;
 
 public enum GamaType
@@ -66,9 +67,13 @@ public class GameManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
+    public void Start()
+    {
+        Game();
+    }
+    
     public void Game()
     {
-        Debug.Log("Game started."); // 디버깅 로그 추가
     	ChangeStage(0);
         GameOverCanvas.SetActive(false);
         quizControl.onCorrect.AddListener(OnClearQuiz);
@@ -79,6 +84,7 @@ public class GameManager : MonoBehaviour
 
     public IEnumerator StartGame()
     {
+        Debug.Log("ASDFASDF");
         ChangeStage(0);
         quizControl.onCorrect.AddListener(OnClearQuiz);
         quizControl.onWrong.AddListener(OnFailQuiz);
@@ -195,9 +201,7 @@ public class GameManager : MonoBehaviour
 
     public void StartPanelInput()
     {
-        Debug.Log($"MainMenuCanvas active state before: {MainMenuCanvas.activeSelf}");
         MainMenuCanvas.SetActive(false);
-        Debug.Log($"MainMenuCanvas active state after: {MainMenuCanvas.activeSelf}");
         Game(); //게임 시작
     }
 
