@@ -68,6 +68,7 @@ public class GameManager : MonoBehaviour
 
     public void Game()
     {
+        Debug.Log("Game started."); // 디버깅 로그 추가
     	ChangeStage(0);
         GameOverCanvas.SetActive(false);
         quizControl.onCorrect.AddListener(OnClearQuiz);
@@ -194,7 +195,9 @@ public class GameManager : MonoBehaviour
 
     public void StartPanelInput()
     {
+        Debug.Log($"MainMenuCanvas active state before: {MainMenuCanvas.activeSelf}");
         MainMenuCanvas.SetActive(false);
+        Debug.Log($"MainMenuCanvas active state after: {MainMenuCanvas.activeSelf}");
         Game(); //게임 시작
     }
 

@@ -13,6 +13,16 @@ public class LaserPointerHandler : MonoBehaviour
     {
         // LaserPointer의 이벤트에 함수 등록
         laserPointer.PointerClick += OnPointerClick;
+        if (instance != null && instance != this)
+    {
+        Debug.LogError("Another GameManager instance exists! Destroying this one.");
+        Destroy(gameObject);
+        return;
+    }
+
+    instance = this;
+    DontDestroyOnLoad(gameObject);
+    Debug.Log("GameManager instance initialized.");
     }
 
     void OnDestroy()
