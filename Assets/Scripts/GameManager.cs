@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.TextCore;
 using UnityEngine.UI;
 
 public enum GamaType
@@ -66,6 +67,11 @@ public class GameManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
+    public void Start()
+    {
+        Game();
+    }
+    
     public void Game()
     {
     	ChangeStage(0);
@@ -78,6 +84,7 @@ public class GameManager : MonoBehaviour
 
     public IEnumerator StartGame()
     {
+        Debug.Log("ASDFASDF");
         ChangeStage(0);
         quizControl.onCorrect.AddListener(OnClearQuiz);
         quizControl.onWrong.AddListener(OnFailQuiz);
