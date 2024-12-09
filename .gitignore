@@ -1,1 +1,22 @@
 Temp/
+# Unity 관련 기본 설정
+[Ll]ibrary/
+[Tt]emp/
+[Oo]bj/
+[Bb]uild/
+[Bb]uilds/
+[Ll]ogs/
+[Mm]emoryCaptures/
+.vscode/
+.vs/
+*.csproj
+*.unityproj
+*.sln
+*.userprefs
+
+# 추가로 제외할 파일
+.DS_Store
+*.apk
+*.aab
+*.log
+
