@@ -8,6 +8,7 @@ public class LaserPointerHandler : MonoBehaviour
     public SteamVR_Action_Boolean interactUIAction; // InteractUI 액션
      public GameObject startMainCanvas; // StartMainCanvas 오브젝트
     public GameManager gameManager; // GameManager 스크립트 참조
+     public Vector3 offscreenPosition = new Vector3(10000, 10000, 10000); // 캔버스를 보이지 않게 이동할 위치
 
     void Awake()
     {
@@ -32,6 +33,7 @@ public class LaserPointerHandler : MonoBehaviour
             Destroy(e.target.gameObject); // 오브젝트 제거\
             GameManager.instance.StartPanelInput();
              // 캔버스 비활성화
+            startMainCanvas.transform.position = offscreenPosition; // 캔버스를 아주 멀리 이동
             startMainCanvas.SetActive(false); 
         }
 
@@ -66,6 +68,7 @@ public class LaserPointerHandler : MonoBehaviour
             {
                 //gameManager.StartPanelInput();
                 GameManager.instance.StartPanelInput();
+                startMainCanvas.transform.position = offscreenPosition; // 캔버스를 아주 멀리 이동
                 // 캔버스 비활성화
                 startMainCanvas.SetActive(false); 
             }

@@ -100,6 +100,11 @@ public class GameManager : MonoBehaviour
 
     void StartProjectile()
     {
+         // 모든 활성화된 투사체를 발사 (풀링 시스템 사용 시)
+            foreach (var projectile in FindObjectsByType<ProjectileControl>(FindObjectsSortMode.None))
+            {
+                projectile.Launch(); // 투사체 발사
+            }
         gameType = GamaType.Projectile;
         onStartProjectile.Invoke();
     }
