@@ -7,7 +7,7 @@ public class ProjectileControl : MonoBehaviour
 {
     public ProjectilePoolControl pool;
     public Transform targetPos;
-    public static float projectileSpeed = 10.0f;
+    public static float projectileSpeed = 7.0f;
 
     private Rigidbody _rb;
     
@@ -54,8 +54,21 @@ public class ProjectileControl : MonoBehaviour
         if(grabbed){
             return;
         }
-        _rb.linearVelocity = transform.forward * projectileSpeed;
+        if (targetPos != null)
+    {
+        // 목표 방향 계산
+        Vector3 direction = (targetPos.position - transform.position).normalized;
+        // Rigidbody를 사용해 목표 방향으로 발사
+        _rb.linearVelocity = direction * projectileSpeed;
     }
+    else
+    {
+        Debug.LogWarning("Target position is not set for this projectile!");
+    }
+}
+        //_rb.linearVelocity = transform.forward * projectileSpeed;
+        //투사체가 플레이어 위치를 추적하도록 설정
+    
 
     public void Grabbed()
     {

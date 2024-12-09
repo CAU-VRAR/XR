@@ -29,6 +29,9 @@ public class GameManager : MonoBehaviour
     public UnityEvent onStartQuiz;
     public UnityEvent onEndQuiz;
 
+    public HealthUIController healthUIController; // HealthUIController 참조
+    
+
     public float projectileTime = 20.0f;
     
     public int nowStage = 1;
@@ -39,6 +42,7 @@ public class GameManager : MonoBehaviour
 
     public GameObject MainMenuCanvas;
     public GameObject GameOverCanvas;
+    public GameObject QuizCanvas; // 퀴즈 패널을 참조하기 위한 변수
     
     [SerializeField] private MeshRenderer ground;
     [SerializeField] List<Material> groundMaterials;
@@ -100,17 +104,32 @@ public class GameManager : MonoBehaviour
 
     void StartProjectile()
     {
-         // 모든 활성화된 투사체를 발사 (풀링 시스템 사용 시)
-            foreach (var projectile in FindObjectsByType<ProjectileControl>(FindObjectsSortMode.None))
-            {
-                projectile.Launch(); // 투사체 발사
-            }
+         StartCoroutine(SpawnProjectiles());
         gameType = GamaType.Projectile;
         onStartProjectile.Invoke();
     }
 
+    IEnumerator SpawnProjectiles()
+{
+    float spawnInterval = 1.0f; // 투사체 발사 간격 (초)
+
+    while (gameType == GamaType.Projectile)
+    {
+        // ProjectilePoolControl에서 하나의 투사체 가져오기
+        var projectile = FindObjectOfType<ProjectilePoolControl>().GetOneProjectile();
+        if (projectile != null)
+        {
+            projectile.Launch(); // 투사체 발사
+        }
+
+        // 다음 발사까지 대기
+        yield return new WaitForSeconds(spawnInterval);
+    }
+}
+
     void EndProjectile()
     {
+        StopCoroutine(SpawnProjectiles()); // 코루틴 종료
         gameType = GamaType.Waiting;
         onEndProjectile.Invoke();
     }
@@ -140,9 +159,16 @@ public class GameManager : MonoBehaviour
 
     void GameOver()
     {
-        //TODO: 게임오버 처리 (눈덩이 날아오는거 멈추기)
+        
         SoundManager.Instance.PlaySoundOneShot("GameOver",0.7f);
         GameOverCanvas.SetActive(true);
+        // 게임 오버 텍스트 표시
+        healthUIController.ShowGameOver();
+        // 퀴즈 패널 활성화 
+        if (QuizCanvas != null)
+        {
+            QuizCanvas.SetActive(true);
+        }
     }
 
     public void Retry()
@@ -151,6 +177,8 @@ public class GameManager : MonoBehaviour
         playerHealth = START_HEALTH;
     }
     
+    public float spawnInterval = 1.0f; // 투사체 발사 간격
+    public float initialProjectileSpeed = 5.0f; //속도
     void ChangeStage(int stage)
     {
         Debug.Log($"Stage {stage}");
@@ -164,6 +192,7 @@ public class GameManager : MonoBehaviour
         SoundManager.Instance.ChangeStageBGM();
         SoundManager.Instance.PlaySoundOneShot("NextStage",0.7f);
         projectileDamage = 10 + 5 * stage;
+        spawnInterval = Mathf.Max(0.5f, 1.0f - 0.1f * stage); // 발사 간격 줄이기
         ProjectileControl.projectileSpeed = 10 + 2 * stage;
         
         nowStage = stage;
@@ -177,6 +206,8 @@ public class GameManager : MonoBehaviour
         //바로 감소시키면 너무 빨라서 서서히 감소
         //playerHealthSlider.value = playerHealth;
         StartCoroutine(DecreaseHealthSlider());
+        // 체력 UI 업데이트
+        healthUIController.UpdateHealthPercentage(playerHealth, START_HEALTH);
         
         if (playerHealth <= 0)
         {

@@ -6,14 +6,13 @@ public class ProjectilePoolControl : MonoBehaviour
 {
     public Queue<ProjectileControl> Projectiles = new();
     public Transform target; // 플레이어(혹은 목표) Transform
-    public float speed = 10f; // 눈덩이 속도
+    public float speed = 5f; // 눈덩이 속도
      private Rigidbody rb; // Rigidbody 컴포넌트
     
     // Start is called before the first frame update
     void Start()
     {
-         rb = GetComponent<Rigidbody>();
-
+         Projectiles = new Queue<ProjectileControl>(GetComponentsInChildren<ProjectileControl>(true));
         if (target != null)
         {
             // 플레이어 방향으로 속도 설정
@@ -33,10 +32,37 @@ public class ProjectilePoolControl : MonoBehaviour
     {
     }
 
-    public ProjectileControl GetOneProjectile()
+//     public ProjectileControl GetOneProjectile()
+//     {
+//         var projectile = Projectiles.Dequeue();
+//         projectile.gameObject.SetActive(true);
+
+//         // 투사체의 타겟 설정
+//     if (target != null)
+//     {
+//         projectile.targetPos = target; // 타겟은 플레이어
+//     }
+//     else
+//     {
+//         Debug.LogWarning("Target is not set in ProjectilePoolControl!");
+//     }
+//         return projectile;
+//     }
+// }
+public ProjectileControl GetOneProjectile()
+{
+    if (Projectiles.Count > 0)
     {
         var projectile = Projectiles.Dequeue();
         projectile.gameObject.SetActive(true);
+
+        // 타겟 설정
+        projectile.targetPos = GameManager.instance.player.transform;
+
         return projectile;
     }
+
+    Debug.LogWarning("No projectiles available in the pool!");
+    return null;
+}
 }
