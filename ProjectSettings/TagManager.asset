@@ -8,6 +8,8 @@ TagManager:
   - FxTemporaire
   - Ground
   - Capsule
+  - Ice
+  - Snow
   layers:
   - Default
   - TransparentFX
