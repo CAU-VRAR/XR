@@ -19,7 +19,7 @@ MonoBehaviour:
     width: 1920
     height: 989
   m_ShowMode: 4
-  m_Title: Inspector
+  m_Title: Game
   m_RootView: {fileID: 6}
   m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
@@ -69,8 +69,8 @@ MonoBehaviour:
     y: 0
     width: 324
     height: 933
-  m_MinSize: {x: 276, y: 76}
-  m_MaxSize: {x: 4001, y: 4026}
+  m_MinSize: {x: 275, y: 50}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 13}
   m_Panes:
   - {fileID: 13}
@@ -95,8 +95,8 @@ MonoBehaviour:
     y: 0
     width: 429
     height: 507
-  m_MinSize: {x: 201, y: 226}
-  m_MaxSize: {x: 4001, y: 4026}
+  m_MinSize: {x: 200, y: 200}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 14}
   m_Panes:
   - {fileID: 14}
@@ -343,9 +343,9 @@ MonoBehaviour:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: a69d0000
-    m_LastClickedID: 40358
-    m_ExpandedIDs: 000000002c9d00002e9d0000309d0000329d0000349d0000369d0000389d00003a9d00003c9d00003e9d000000ca9a3b
+    m_SelectedIDs: 609d0000
+    m_LastClickedID: 40288
+    m_ExpandedIDs: 00000000dc9c0000de9c0000e09c0000e29c0000e49c0000e69c0000e89c0000ea9c0000ec9c0000ee9c000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -374,7 +374,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 000000002c9d00002e9d0000309d0000329d0000349d0000369d0000389d00003a9d00003c9d00003e9d0000
+    m_ExpandedIDs: 00000000dc9c0000de9c0000e09c0000e29c0000e49c0000e69c0000e89c0000ea9c0000ec9c0000ee9c0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -519,10 +519,10 @@ MonoBehaviour:
     m_OverlaysVisible: 1
   m_SceneHierarchy:
     m_TreeViewState:
-      scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: c88e0000
-      m_LastClickedID: 36552
-      m_ExpandedIDs: 68faffff
+      scrollPos: {x: 0, y: 52}
+      m_SelectedIDs: 1e880000
+      m_LastClickedID: 34846
+      m_ExpandedIDs: 5ef2ffffa6f2ffff24fbfffff4ffffff888a00008c8b00009a8b0000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -1042,9 +1042,9 @@ MonoBehaviour:
   m_AudioPlay: 0
   m_DebugDrawModesUseInteractiveLightBakingData: 0
   m_Position:
-    m_Target: {x: -3.1877685, y: 0.75372386, z: -2.4528246}
+    m_Target: {x: 0.63023615, y: 4.1538734, z: -10.192535}
     speed: 2
-    m_Value: {x: -3.1877685, y: 0.75372386, z: -2.4528246}
+    m_Value: {x: 0.63023615, y: 4.1538734, z: -10.192535}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -1090,13 +1090,13 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: -0.11724758, y: 0.8028419, z: -0.16809475, w: -0.55994487}
+    m_Target: {x: -0.0032019147, y: 0.9744063, z: -0.014038682, w: -0.22457264}
     speed: 2
-    m_Value: {x: -0.11724195, y: 0.80280334, z: -0.16808668, w: -0.559918}
+    m_Value: {x: -0.0032017422, y: 0.9743538, z: -0.014037926, w: -0.22456054}
   m_Size:
-    m_Target: 2.3714087
+    m_Target: 5.708555
     speed: 2
-    m_Value: 2.3714087
+    m_Value: 5.708555
   m_Ortho:
     m_Target: 0
     speed: 2
