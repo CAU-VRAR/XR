@@ -125,6 +125,11 @@ public class GameManager : MonoBehaviour
         // 다음 발사까지 대기
         yield return new WaitForSeconds(spawnInterval);
     }
+    // 퀴즈 패널 활성화 
+        if (QuizCanvas != null)
+        {
+            QuizCanvas.SetActive(true);
+        }
 }
 
     void EndProjectile()
@@ -157,18 +162,15 @@ public class GameManager : MonoBehaviour
         GameOver();
     }
 
-    void GameOver()
+     public void GameOver()
     {
         
         SoundManager.Instance.PlaySoundOneShot("GameOver",0.7f);
         GameOverCanvas.SetActive(true);
         // 게임 오버 텍스트 표시
         healthUIController.ShowGameOver();
-        // 퀴즈 패널 활성화 
-        if (QuizCanvas != null)
-        {
-            QuizCanvas.SetActive(true);
-        }
+        GameOverPanelInput();
+        
     }
 
     public void Retry()
