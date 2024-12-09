@@ -67,13 +67,25 @@
   <ItemGroup>
     <Compile Include="Assets\scripts\LaserPointerHandler.cs" />
     <Compile Include="Assets\scripts\PlayerHealth.cs" />
+    <Compile Include="Assets\scripts\ProgressbarControl.cs" />
+    <Compile Include="Assets\scripts\SoundManager.cs" />
     <Compile Include="Assets\Realistic Hail Set\Demo Scene\Scripts\DemoSceneController.cs" />
+    <Compile Include="Assets\scripts\SpawnPointsControl.cs" />
+    <Compile Include="Assets\scripts\MainMenu.cs" />
+    <Compile Include="Assets\scripts\BlinkingText.cs" />
     <Compile Include="Assets\scripts\CloseCanvas.cs" />
     <Compile Include="Assets\scripts\RightTriggerInput.cs" />
     <Compile Include="Assets\scripts\MessagePanel.cs" />
     <Compile Include="Assets\scripts\SphereCollision.cs" />
+    <Compile Include="Assets\scripts\GameManager.cs" />
+    <Compile Include="Assets\scripts\GazeControl.cs" />
     <Compile Include="Assets\scripts\snowSpawn.cs" />
+    <Compile Include="Assets\scripts\SpawnPoint.cs" />
     <Compile Include="Assets\scripts\Gaze.cs" />
+    <Compile Include="Assets\scripts\ProjectileControl.cs" />
+    <Compile Include="Assets\scripts\QuizControl.cs" />
+    <Compile Include="Assets\scripts\ProjectilePoolControl.cs" />
+    <Compile Include="Assets\scripts\Ice.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

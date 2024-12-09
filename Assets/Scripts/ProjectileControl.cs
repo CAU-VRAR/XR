@@ -54,7 +54,7 @@ public class ProjectileControl : MonoBehaviour
         if(grabbed){
             return;
         }
-        _rb.velocity = transform.forward * projectileSpeed;
+        _rb.linearVelocity = transform.forward * projectileSpeed;
     }
 
     public void Grabbed()

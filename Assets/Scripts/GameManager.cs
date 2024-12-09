@@ -195,7 +195,7 @@ public class GameManager : MonoBehaviour
     public void StartPanelInput()
     {
         MainMenuCanvas.SetActive(false);
-        Game();
+        Game(); //게임 시작
     }
 
     public void GameOverPanelInput()
