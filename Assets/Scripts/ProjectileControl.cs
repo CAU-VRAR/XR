@@ -63,6 +63,7 @@ public class ProjectileControl : MonoBehaviour
 
     public void DisableThis()
     {
+        SoundManager.Instance.PlaySoundOneShot("Snow",0.6f);
         gameObject.SetActive(false);
         pool.Projectiles.Enqueue(this);
     }
