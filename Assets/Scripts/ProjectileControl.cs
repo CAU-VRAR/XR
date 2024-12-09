@@ -42,6 +42,7 @@ public class ProjectileControl : MonoBehaviour
         
         else if (other.gameObject.CompareTag("Ice") && gameObject.CompareTag("Snow"))
         {
+            SoundManager.Instance.PlaySoundOneShot("Snow",0.6f);
             other.transform.GetComponent<ProjectileControl>().DisableThis();
             DisableThis();
         }
@@ -63,7 +64,6 @@ public class ProjectileControl : MonoBehaviour
 
     public void DisableThis()
     {
-        SoundManager.Instance.PlaySoundOneShot("Snow",0.6f);
         gameObject.SetActive(false);
         pool.Projectiles.Enqueue(this);
     }
