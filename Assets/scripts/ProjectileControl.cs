@@ -42,7 +42,7 @@ public class ProjectileControl : MonoBehaviour
         
         else if (other.gameObject.CompareTag("Ice") && gameObject.CompareTag("Snow"))
         {
-            SoundManager.Instance.PlaySoundOneShot("Snow",0.6f);
+            SoundManager.Instance.PlaySoundOneShot("Snow",1.0f);
             other.transform.GetComponent<ProjectileControl>().DisableThis();
             DisableThis();
         }
