@@ -15,7 +15,7 @@ public enum GamaType
 public class GameManager : MonoBehaviour
 {
     const int STAGE_COUNT = 5;
-    private const int START_HEALTH = 100;
+    private const int START_HEALTH = 150;
     
     public static GameManager instance { get; private set; }
 
@@ -73,15 +73,13 @@ public class GameManager : MonoBehaviour
 
     public void Start()
     {
-        Game();
+        StartPanelInput(); //대기상태 // 메인 메뉴를 보여주며 대기
     }
     
     public void Game()
     {
     	ChangeStage(0);
         GameOverCanvas.SetActive(false);
-        quizControl.onCorrect.AddListener(OnClearQuiz);
-        quizControl.onWrong.AddListener(OnFailQuiz);
         
         StartCoroutine(StartGame());
     }
@@ -104,7 +102,7 @@ public class GameManager : MonoBehaviour
 
     void StartProjectile()
     {
-         StartCoroutine(SpawnProjectiles());
+        StartCoroutine(SpawnProjectiles()); //여기서 투사체 발사 시작됨
         gameType = GamaType.Projectile;
         onStartProjectile.Invoke();
     }
@@ -241,9 +239,24 @@ public class GameManager : MonoBehaviour
 
     public void StartPanelInput()
     {
-        MainMenuCanvas.SetActive(false);
-        Game(); //게임 시작
+        MainMenuCanvas.SetActive(true); //대기상태 
+        //유저가 클릭함 
     }
+
+    public void OnStartButtonPressed()
+{
+    if (MainMenuCanvas != null)
+    {
+        Debug.Log("Disabling MainMenuCanvas.");
+        MainMenuCanvas.SetActive(false);
+    }
+    else
+    {
+        Debug.LogWarning("MainMenuCanvas is null!");
+    }
+     // 메인 메뉴 비활성화
+    Game(); // 게임 시작
+}
 
     public void GameOverPanelInput()
     {
