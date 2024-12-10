@@ -211,6 +211,7 @@ public class GameManager : MonoBehaviour
         StartCoroutine(DecreaseHealthSlider());
         // 체력 UI 업데이트
         healthUIController.UpdateHealthPercentage(playerHealth, START_HEALTH);
+        SoundManager.Instance.PlaySoundOneShot("Ouch",0.5f);
         
         if (playerHealth <= 0)
         {
