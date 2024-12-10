@@ -9224,8 +9224,8 @@ MonoBehaviour:
   spawnPoints: []
   snowProjectilePool: {fileID: 1894565033}
   iceProjectilePool: {fileID: 1823317913}
-  iceProbability: 0.2
-  shootCoolTime: 1.5
+  iceProbability: 0.5
+  shootCoolTime: 0.5
 --- !u!1001 &928040090
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9790,6 +9790,10 @@ PrefabInstance:
     - target: {fileID: 6450396317965867222, guid: 4a578e1111166a74187dd2b804bba337, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7623155832634573954, guid: 4a578e1111166a74187dd2b804bba337, type: 3}
+      propertyPath: scaleReleaseVelocity
+      value: 4.03
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -11265,7 +11269,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   healthUIController: {fileID: 0}
-  projectileTime: 20
+  projectileTime: 30
   nowStage: 1
   playerHealth: 100
   projectileDamage: 20

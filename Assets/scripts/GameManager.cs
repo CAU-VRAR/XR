@@ -32,7 +32,7 @@ public class GameManager : MonoBehaviour
     public HealthUIController healthUIController; // HealthUIController 참조
     
 
-    public float projectileTime = 20.0f;
+    public float projectileTime = 30.0f;
     
     public int nowStage = 1;
 
@@ -177,6 +177,7 @@ public class GameManager : MonoBehaviour
     {
         nowStage = 0;
         playerHealth = START_HEALTH;
+        MainMenuCanvas.SetActive(true);
     }
     
     public float spawnInterval = 1.0f; // 투사체 발사 간격
